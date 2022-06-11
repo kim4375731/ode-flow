@@ -98,12 +98,43 @@ sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 ## Pull and run the latest docker image of AI618_Group7 project (ode-flow)
 - Pull the image
 ```
-docker pull []
+docker pull kim4375731/agen_ai618:7
 ```
 - Run a container
+    - Designate your own path to connect your host environment's path with the container's path: [host-path]:[container-path]
+    ex. /home/yongjae/sharehouse:/root/sharehouse
+    - Designate your container name: [container-name]
+    ex. agen_ai618_7
 ```
-docker run []
+docker run -it --privileged -v [host-path]:[container-path] -v /etc/localtime:/etc/localtime:ro -v /dev/input:/dev/input:ro --gpus all --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --env XAUTHORITY=$XAUTH --env=NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility --shm-size=8G --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name [container_name] kim4375731/agen_ai618:7
 ```
+An example command:
+```
+docker run -it --privileged -v /home/yongjae/sharehouse:/root/sharehouse -v /etc/localtime:/etc/localtime:ro -v /dev/input:/dev/input:ro --gpus all --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --env XAUTHORITY=$XAUTH --env=NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility --shm-size=8G --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name agen_ai618_7 kim4375731/agen_ai618:7
+```
+With the command above, you will start a container with the name of 'agen_ai618_7' of the docker image 'kim4375731/agen_ai618:7'
+
+- To stop the container, at host CLI:
+```
+docker stop [container-name]
+```
+- To confirm the list of running containers:
+```
+docker ps
+```
+- To confirm the full list of containers including stopped ones:
+```
+docker ps -a
+```
+- To start a stopped container: 
+```
+docker start -i [container-name]
+```
+- To open a new CLI session of a container while running the container:
+```
+docker exec -it [container-name] bash
+```
+
 ## Train
 ## Evaluate
 ## Plot the results with pre-computed results in npz files by the authors
