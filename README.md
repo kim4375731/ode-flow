@@ -98,21 +98,21 @@ sudo docker run --rm --gpus all nvidia/cuda:11.0-base nvidia-smi
 ## Pull and run the latest docker image of AI618_Group7 project (ode-flow)
 - Pull the image
 ```
-docker pull kim4375731/agen_ai618:7
+docker pull kim4375731/agen_ai618:8
 ```
 - Run a container
     - Designate your own path to connect your host environment's path with the container's path: [host-path]:[container-path]
     ex. /home/yongjae/sharehouse:/root/sharehouse
     - Designate your container name: [container-name]
-    ex. agen_ai618_7
+    ex. agen_ai618_8
 ```
-docker run -it --privileged -v [host-path]:[container-path] -v /etc/localtime:/etc/localtime:ro -v /dev/input:/dev/input:ro --gpus all --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --env XAUTHORITY=$XAUTH --env=NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility --shm-size=8G --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name [container_name] kim4375731/agen_ai618:7
+docker run -it --privileged -v [host-path]:[container-path] -v /etc/localtime:/etc/localtime:ro -v /dev/input:/dev/input:ro --gpus all --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --env XAUTHORITY=$XAUTH --env=NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility --shm-size=8G --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name [container_name] kim4375731/agen_ai618:8
 ```
 An example command:
 ```
-docker run -it --privileged -v /home/yongjae/sharehouse:/root/sharehouse -v /etc/localtime:/etc/localtime:ro -v /dev/input:/dev/input:ro --gpus all --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --env XAUTHORITY=$XAUTH --env=NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility --shm-size=8G --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name agen_ai618_7 kim4375731/agen_ai618:7
+docker run -it --privileged -v /home/yongjae/sharehouse:/root/sharehouse -v /etc/localtime:/etc/localtime:ro -v /dev/input:/dev/input:ro --gpus all --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --env XAUTHORITY=$XAUTH --env=NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility --shm-size=8G --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name agen_ai618_8 kim4375731/agen_ai618:8
 ```
-With the command above, you will start a container with the name of 'agen_ai618_7' of the docker image 'kim4375731/agen_ai618:7'
+With the command above, you will start a container with the name of 'agen_ai618_8' of the docker image 'kim4375731/agen_ai618:8'
 
 - To stop the container, at host CLI:
 ```
